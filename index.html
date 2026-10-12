@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffe6ee">
+<title>HBD to MY Laddu💗</title>
+<style>
+:root{--pink:#ffe7ee;--rose:#c72e63;--deep:#842344;--cream:#fff9ef;--gold:#d6b36c;--ink:#54273a}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;background:var(--pink)}
+button{font:inherit;cursor:pointer}
+.page{display:none;min-height:100svh;padding:22px 16px 35px;position:relative;overflow:hidden;text-align:center;background:radial-gradient(circle at 12% 18%,#fff9f8 0,transparent 34%),linear-gradient(145deg,#fff2f4,#fbdde7 58%,#fff6ed)}
+.page.active{display:flex;align-items:center;justify-content:center;animation:fade .45s ease}
+.content{width:min(880px,100%);margin:auto;position:relative;z-index:1}
+h1{font-size:clamp(2.3rem,8vw,4.7rem);color:var(--rose);font-weight:normal;line-height:1.05;margin:.15em 0}
+h2{font-size:clamp(1.65rem,5vw,2.65rem);color:var(--deep);font-weight:normal;margin:.3em 0 .55em}
+p{font-size:clamp(1rem,2.7vw,1.18rem);line-height:1.65}
+.small{font-size:.92rem;opacity:.82}
+.btn{display:inline-block;border:0;border-radius:999px;padding:13px 22px;margin:8px 5px;color:#fff;background:linear-gradient(135deg,#e34e78,#b91f56);box-shadow:0 5px 0 #92234b,0 9px 20px #aa2a5720;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.light{background:#fffaf2;color:var(--deep);border:1px solid #e6bdca;box-shadow:0 4px 0 #e6c4cf}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.back{background:#fffaf2;color:#a5224e;border:1px solid #e9b6c6;border-radius:10px;padding:9px 13px;box-shadow:0 3px 7px #7c30401a}
+.step{font-size:.8rem;color:#a34d6a}
+.bunny{font-size:clamp(4rem,13vw,7rem);animation:bob 2.4s ease-in-out infinite;filter:drop-shadow(0 8px 5px #c67b9430)}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.heart{position:absolute;bottom:-35px;opacity:.5;color:#df5988;animation:floatUp linear infinite}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+@keyframes bob{50%{transform:translateY(-8px) rotate(2deg)}}
+@keyframes fade{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+.balloon-grid{display:grid;grid-template-columns:repeat(2,minmax(125px,155px));gap:18px;justify-content:center;margin:22px auto}
+.balloon{min-height:155px;border:0;border-radius:50% 50% 47% 47%;font-size:4.4rem;background:radial-gradient(circle at 30% 22%,#fff9 0 7%,transparent 22%),linear-gradient(135deg,#ffc5d4,#e95d88);box-shadow:inset -9px -8px 14px #b5366330,inset 7px 7px 14px #fff8;position:relative;transition:.3s}
+.balloon:after{content:"";position:absolute;bottom:-12px;left:calc(50% - 6px);border-left:6px solid transparent;border-right:6px solid transparent;border-top:12px solid #e98aa7}
+.balloon:nth-child(2){background:radial-gradient(circle at 30% 22%,#fff9 0 7%,transparent 22%),linear-gradient(135deg,#d5edff,#72b5e8)}
+.balloon:nth-child(3){background:radial-gradient(circle at 30% 22%,#fff9 0 7%,transparent 22%),linear-gradient(135deg,#f0d9ff,#ad80dc)}
+.balloon:nth-child(4){background:radial-gradient(circle at 30% 22%,#fff9 0 7%,transparent 22%),linear-gradient(135deg,#e2f5c9,#87c875)}
+.balloon:hover{transform:translateY(-5px) rotate(2deg)}
+.balloon-note{min-height:155px;width:100%;display:flex;align-items:center;justify-content:center;padding:13px;border:2px dashed #e3a4b9;border-radius:22px;background:#fff8ed;color:#9e2451;font-size:.98rem;line-height:1.5;animation:fade .45s ease;box-shadow:0 7px 15px #b63b6712}
+.cake{font-size:7rem;display:inline-block;cursor:pointer;transition:.25s}
+.rose-layout{display:grid;grid-template-columns:1fr 1.3fr;align-items:center;gap:22px;text-align:left}
+.rose-photo{width:100%;display:block;border-radius:18px;box-shadow:0 16px 35px #7431472b;border:5px solid #fff8f1;object-fit:cover}
+.rose-copy{text-align:left}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:20px 0}
+.photo-card{background:#fffdf8;border:1px solid #f0d7db;padding:8px 8px 13px;border-radius:9px;box-shadow:0 6px 18px #9a46601b;transform:rotate(-1deg);transition:.2s;color:var(--deep);text-align:center}
+.photo-card:nth-child(even){transform:rotate(1deg)}
+.photo-card:hover{transform:translateY(-4px) rotate(0)}
+.photo-card img,.photo-placeholder{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:5px;background:linear-gradient(145deg,#f9d5e1,#fff2dd)}
+.photo-placeholder{display:flex;align-items:center;justify-content:center;font-size:2.6rem}
+.photo-card strong{display:block;font-size:.92rem;margin-top:9px}
+.photo-card span{font-size:.78rem}
+.progress{display:flex;gap:7px;justify-content:center;margin:12px 0}
+.dot{width:9px;height:9px;border-radius:50%;background:#e8b3c6}.dot.on{background:var(--rose);transform:scale(1.2)}
+.gift{font-size:7rem;display:inline-block;cursor:pointer;animation:bob 2s infinite;filter:drop-shadow(0 10px 6px #b65c7d22)}
+.envelope{width:min(300px,78vw);height:185px;margin:24px auto;position:relative;cursor:pointer;filter:drop-shadow(0 12px 12px #7e365522)}
+.env-base{position:absolute;inset:20px 0 0;background:#fff2d5;border:2px solid #d7b56b;border-radius:6px}
+.env-flap{position:absolute;top:20px;left:0;width:100%;height:125px;background:#f6cbd8;clip-path:polygon(0 0,100% 0,50% 75%);z-index:2}
+.env-seal{position:absolute;top:78px;left:calc(50% - 20px);z-index:3;font-size:2.2rem}
+.letter{display:none;text-align:left;background:#f6e8c9;border:1px solid #d2b47b;border-radius:5px;padding:clamp(20px,5vw,38px);max-width:700px;margin:20px auto;box-shadow:0 12px 30px #8a5d3822;background-image:repeating-linear-gradient(transparent 0px,transparent 31px,#c9ad7c42 32px)}
+.letter.open{display:block;animation:fade .7s}
+.letter h3{text-align:center;font-weight:normal;font-size:1.7rem;color:#7e3a45;margin-top:0}
+#typedMessage{white-space:pre-wrap;line-height:2;font-size:1.05rem;min-height:90px}
+.choco-bunny{display:none;margin:25px auto 0;animation:fade .7s}
+.choco-bunny.show{display:block}
+.choco{font-size:3.5rem}
+.modal{position:fixed;inset:0;background:#35121fe8;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal.show{display:flex}
+.modal-inner{background:#fff8f2;padding:24px;border-radius:18px;max-width:520px;width:100%;box-shadow:0 20px 80px #0004}
+.modal-inner img{max-width:100%;max-height:42vh;object-fit:contain;border-radius:8px}
+@media(max-width:620px){.photo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo-card{padding:6px 6px 11px}.photo-card strong{font-size:.82rem}.photo-card span{font-size:.7rem}.rose-layout{grid-template-columns:1fr;gap:10px}.rose-photo{max-height:340px}.rose-copy{text-align:center}.balloon-grid{gap:13px}.balloon,.balloon-note{min-height:135px}.balloon{font-size:3.7rem}.balloon-note{font-size:.88rem}.nav{margin-bottom:8px}}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+
+<section class="page active" id="p1">
+ <div class="content">
+  <div class="nav"><span></span><span class="step">A little surprise made with love,for my love ,from His Rabbit♡</span></div>
+  <div class="bunny">❤️🐰❤️</div>
+  <p class="small">For the girl who makes my world softer and intresting…</p>
+  <h1>Happy Birthday,<br><span id="herName">My Love</span> 💖</h1>
+  <p>May your day be as beautiful as your heart.<br>You deserve a thousand little reasons to smile. ❤️</p>
+  <button class="btn" onclick="go(2)">Yes, let's begin! 💕</button>
+ </div>
+</section>
+
+<section class="page" id="p2">
+ <div class="content">
+  <div class="nav"><button class="back" onclick="go(1)">← Back</button><span class="step">Surprise 1 of 5</span></div>
+  <h2>Pop the balloons 🎈</h2><p class="small">Each balloon is hiding a message just for you.</p>
+  <div class="balloon-grid" id="balloonGrid">
+   <button class="balloon" onclick="pop(this,'You make my world beautiful and lovefull 💗')" aria-label="Pop balloon one">🎈</button>
+   <button class="balloon" onclick="pop(this,'Your smile is my favourite sight. 😊')" aria-label="Pop balloon two">🎈</button>
+   <button class="balloon" onclick="pop(this,'I am so lucky to have you in my life . 🙇')" aria-label="Pop balloon three">🎈</button>
+   <button class="balloon" onclick="pop(this,'Always choosing you in my each and every emotion is a reflection of my deepest feeling for you . 🌹')" aria-label="Pop balloon four">🎈</button>
+  </div>
+  <p id="balloonStatus" aria-live="polite">Tap each balloon to reveal its secret note.</p>
+  <button class="btn" onclick="go(3)">Next surprise →</button>
+ </div>
+</section>
+
+<section class="page" id="p3">
+ <div class="content">
+  <div class="nav"><button class="back" onclick="go(2)">← Back</button><span class="step">Surprise 2 of 5</span></div>
+  <h2>Make a wish,My birthday girl 🕯️</h2>
+  <p>Close your eyes, make a wish, and tap the cake to eat a little bite.</p>
+  <div class="cake" id="cake" onclick="blow()">🎂</div>
+  <p id="cakeText">Your wish deserves to come true. ✨</p>
+  <button class="btn" onclick="go(4)">Next surprise →</button>
+ </div>
+</section>
+
+<section class="page" id="p4">
+ <div class="content">
+  <div class="nav"><button class="back" onclick="go(3)">← Back</button><span class="step">Surprise 3 of 5</span></div>
+  <div class="rose-layout">
+   <div class="rose-copy">
+    <h2>A bouquet for you 🌹</h2>
+    <p>Just like these roses, you fill my life with love, happiness, and beautiful memories.</p>
+    <p>You are so special to me. each and every petals of rose for every reason I adore you. ❤️</p>
+    <button class="btn" onclick="go(5)">See our memories 📸</button>
+   </div>
+   <img class="rose-photo" src="rose-bouquet-png-realistic-hd_P3KT.webp" alt="A realistic bouquet of deep red roses wrapped in elegant cream paper">
+  </div>
+ </div>
+</section>
+
+<section class="page" id="p5">
+ <div class="content">
+  <div class="nav"><button class="back" onclick="go(4)">← Back</button><span class="step">Surprise 4 of 5</span></div>
+  <h2>Six sweet memories 💞</h2>
+  <p class="small"> Tap each one to open my save momory.</p>
+  <div class="progress" id="photoProgress"></div>
+  <div class="photo-grid" id="photoGrid"></div>
+  <p id="photoStatus">0 of 6 memories opened.</p>
+  <button class="btn" onclick="tryGift()">Your final gift 🎁</button>
+  <p class="small" id="giftHint">Open all six photo memories to unlock the final gift.</p>
+ </div>
+</section>
+
+<section class="page" id="p6">
+ <div class="content">
+  <div class="nav"><button class="back" onclick="go(5)">← Back</button><span class="step">Your last surprise 💌</span></div>
+  <h2>Your final gift 🎁</h2>
+  <p>There is one thing I wanted to give you that cannot fit inside a box: the words I carry in my heart.so first tap on gift then tap on letter to open it</p>
+  <div id="giftClosed">
+   <div class="gift" onclick="openGift()" role="button" tabindex="0" aria-label="Open the gift">🎁</div>
+   <p>Tap the gift to discover what's inside.</p>
+  </div>
+  <div class="envelope" id="envelope" onclick="openLetter()" role="button" tabindex="0" aria-label="Open the love letter" style="display:none">
+   <div class="env-base"></div><div class="env-flap"></div><div class="env-seal">💌</div>
+  </div>
+  <article class="letter" id="letter">
+   <h3>A Message From My Heart 💗</h3>
+   <div id="typedMessage"></div>
+   <p style="text-align:right;margin-bottom:0">Yours always,<br><strong id="signoff">Your person 💋</strong></p>
+  </article>
+  <div class="choco-bunny" id="chocoBunny">
+   <div style="font-size:5rem">🐰</div>
+   <div class="choco">🍫🤎🍫</div>
+   <h2>A little dark chocolate for my sweetheart!</h2>
+   <p>This bunny brought you chocolate and a reminder: you are loved more than all the chocolate in the world. 🐰🤎</p>
+   <p style="font-size:1.7rem">💗 🐇 💗</p>
+  </div>
+  <button class="btn light" onclick="go(1)">↻ Start our story again</button>
+ </div>
+</section>
+
+<div class="modal" id="memoryModal" onclick="if(event.target===this)closeMemory()">
+ <div class="modal-inner">
+  <div id="modalPhoto"></div><h2 id="modalTitle"></h2><p id="modalCaption"></p>
+  <button class="btn" onclick="closeMemory()">Keep this memory 💗</button>
+ </div>
+</div>
+
+<script>
+/* ===== PERSONALISE HERE ===== */
+const HER_NAME = "Sonam urf My laddu";
+const YOUR_NAME = "Manoj Shukla urf your Rabbit";
+const LOVE_MESSAGE = `Happy Birthday, my love. ❤️
+
+If I could give you one thing today, it would be the chance to see yourself through my eyes. You would understand how special you are, how your smile can soften a difficult day, and how simply being you makes my world more beautiful.
+
+Thank you for the laughter, the little moments, the memories we have made, and the dreams we have yet to chase. I cannot promise that every day will be perfect, but I can promise to keep choosing kindness, honesty, lovely emotions and us.
+
+May this new year of your life bring you peace, courage, good health, endless reasons to smile, and every beautiful thing your heart quietly wishes for.
+
+You are not just part of my story. You are my favourite chapter.
+
+Happy Birthday, My Laddu. I hope this tiny gift reminds you that someone is cheering for you, believing in you, and loving you—today and on all the ordinary days too.
+
+With all my heart,`;
+/* Add photos named memory1.jpg ... memory6.jpg in the photos folder. */
+const MEMORIES = [
+ {file:"photo_smile i keep.jpg",title:"The smile I keep",caption:"Some moments are small, but the happiness they leave is enormous. 💗"},
+ {file:"photo_one of favourite memory.jpg",title:"One of my favourite memory",caption:"If I could revisit one ordinary day, I would happily choose a day with you. 🌷"},
+ {file:"photo_a little us.jpg",title:"A little us",caption:"My favourite kind of picture is one that reminds me how lucky I am. 🫶"},
+ {file:"photo_one of favourite place.jpg",title:"One of my happy place",caption:"Always a eternal peace comes with you at eternal place. 🏡"},
+ {file:"photo_a moment to keep.jpg",title:"A moment to keep",caption:"I hope we collect a thousand more memories that make us smile. ✨"},
+ {file:"photo_always choosing you.jpg",title:"Always choosing you",caption:"This is one page of our story. I am excited for all the pages ahead. 💞"}
+];
+document.getElementById("herName").textContent=HER_NAME;
+document.getElementById("signoff").textContent=YOUR_NAME+" 💋";
+let popped=0,openedPhotos=new Set(),giftUnlocked=false,typingTimer=null;
+
+function go(n){
+ document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+ document.getElementById("p"+n).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(n===5)updatePhotoProgress();
+}
+function pop(el,wish){
+ if(el.dataset.popped==="true")return;
+ el.dataset.popped="true";popped++;
+ const note=document.createElement("div");note.className="balloon-note";note.textContent=wish;
+ el.replaceWith(note);
+ const status=document.getElementById("balloonStatus");
+ status.textContent=popped===4?"All four love notes are yours! Keep them close to your heart. 💖":"A little message, written just for you. 💌";
+}
+function blow(){
+ document.getElementById("cake").textContent="🍰";
+ document.getElementById("cakeText").textContent="Wish sent to the universe! May it come true. ✨";
+}
+const photoGrid=document.getElementById("photoGrid");
+MEMORIES.forEach((m,i)=>{
+ const card=document.createElement("button");card.type="button";card.className="photo-card";
+ card.innerHTML=`<img src="${m.file}" alt="${m.title}"><div class="photo-placeholder" style="display:none">📷💗</div><strong>${m.title}</strong><span>Tap to open ♡</span>`;
+ const img=card.querySelector("img");img.onerror=()=>{img.style.display="none";card.querySelector(".photo-placeholder").style.display="flex"};
+ card.addEventListener("click",()=>openMemory(i));photoGrid.appendChild(card);
+});
+function openMemory(i){
+ const m=MEMORIES[i];openedPhotos.add(i);
+ const img=document.createElement("img");img.src=m.file;img.alt=m.title;
+ img.onerror=()=>{img.remove();document.getElementById("modalPhoto").innerHTML='<div style="font-size:4rem">📷💗</div><p>Add your image as '+m.file+' to display it here.</p>'};
+ document.getElementById("modalPhoto").replaceChildren(img);
+ document.getElementById("modalTitle").textContent=m.title;
+ document.getElementById("modalCaption").textContent=m.caption;
+ document.getElementById("memoryModal").classList.add("show");updatePhotoProgress();
+}
+function closeMemory(){document.getElementById("memoryModal").classList.remove("show")}
+function updatePhotoProgress(){
+ document.getElementById("photoStatus").textContent=`${openedPhotos.size} of 6 memories opened.`;
+ document.getElementById("photoProgress").innerHTML=MEMORIES.map((_,i)=>`<span class="dot ${openedPhotos.has(i)?"on":""}"></span>`).join("");
+ if(openedPhotos.size===6){giftUnlocked=true;document.getElementById("giftHint").textContent="All six memories are open. Your final gift is ready! 🎁"}
+}
+function tryGift(){
+ if(!giftUnlocked){const remaining=6-openedPhotos.size;document.getElementById("giftHint").textContent=`Open ${remaining} more ${remaining===1?"memory":"memories"} to unlock the final gift. 💗`;return}
+ go(6);
+}
+function openGift(){
+ if(!giftUnlocked){alert("First open all six photo memories to unlock this gift. 💗");return}
+ document.getElementById("giftClosed").style.display="none";
+ document.getElementById("envelope").style.display="block";
+ document.getElementById("envelope").scrollIntoView({behavior:"smooth",block:"center"});
+}
+function openLetter(){
+ const letter=document.getElementById("letter");letter.classList.add("open");
+ document.getElementById("envelope").style.display="none";
+ const target=document.getElementById("typedMessage");target.textContent="";
+ if(typingTimer)clearInterval(typingTimer);
+ const words=LOVE_MESSAGE.split(/(\s+)/);let i=0;
+ typingTimer=setInterval(()=>{
+  if(i>=words.length){clearInterval(typingTimer);target.textContent+="\n\n"+YOUR_NAME+" 💗";document.getElementById("chocoBunny").classList.add("show");return}
+  target.textContent+=words[i++];
+ },75);
+}
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape")closeMemory();
+ if((e.key==="Enter"||e.key===" ")&&document.activeElement.id==="envelope"){e.preventDefault();openLetter()}
+ if((e.key==="Enter"||e.key===" ")&&document.activeElement.classList.contains("gift")){e.preventDefault();openGift()}
+});
+const hb=document.getElementById("hearts");
+for(let i=0;i<22;i++){const h=document.createElement("span");h.className="heart";h.textContent=["♡","♥","✧","💕"][i%4];h.style.left=(Math.random()*100)+"%";h.style.animationDuration=(9+Math.random()*12)+"s";h.style.animationDelay=(-Math.random()*18)+"s";h.style.fontSize=(14+Math.random()*20)+"px";hb.appendChild(h)}
+</script>
+</body>
+</html>
